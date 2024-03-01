@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="3D Object Detection based on Multi-Sensor Input via Fusion at Points of Interest">
+  <meta name="keywords" content="3D Object Detection, Autonomous Driving, Multi-Sensor">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PoIFusion: Multi-Modal 3D Object Detection via Fusion at Points of Interest</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <!-- <link rel="icon" href="./static/images/gpt.png"> -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://djiajunustc.github.io">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+    </div>
+
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">PoIFusion: Multi-Modal 3D Object Detection via Fusion at Points of Interest</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://djiajunustc.github.io">Jiajun Deng</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://github.com/zhangsha1024">Sha Zhang</a><sup>2,3</sup>,</span>
+            <span class="author-block">
+                <a href="https://ferasdayoub.com">Feras Dayoub</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://wlouyang.github.io">Wanli Ouyang</a><sup>3</sup>,
+            <!-- </span> -->
+            <span class="author-block">
+              <a href="http://staff.ustc.edu.cn/~yanyongz">Yanyong Zhang</a><sup>2</sup>
+            <!-- </span> -->
+            <span class="author-block">
+              <a href="https://mbzuai.ac.ae/study/faculty/ian-reid">Ian Reid</a><sup>1,4</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>University of Adelaide,</span>
+            <span class="author-block"><sup>2</sup>University of Science and Technology of China</span>
+            <span class="author-block"><sup>3</sup>Shanghai AI Laboratory</span>
+            <span class="author-block"><sup>4</sup>Mohammad Bin Zayed University of Artificial Intelligence</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://link.springer.com/article/10.1007/s11263-023-01981-w"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- <span class="link-block">
+                <a href="https://arxiv.org/abs/2310.01415"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span> -->
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://djiajunustc.github.io/"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code (Coming Soon)</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <!-- <span class="link-block">
+                <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a> -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- 
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="static/images/poifusion_framework.png" alt="PoIFusion">
+      <!-- <h2 class="subtitle has-text-centered">
+        <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
+        free-viewpoint
+        portraits.
+      </h2> -->
+    <!-- </div>
+  </div>
+</section> --> -->
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            In this work, we present PoIFusion, a simple yet effective multi-modal 3D object detection framework to fuse the information of RGB images and LiDAR point clouds at the point of interest (abbreviated as PoI). Technically, our PoIFusion follows the paradigm of query-based object detection, formulating object queries as dynamic 3D boxes. The PoIs are adaptively generated from each query box on the fly, serving as the keypoints to represent a 3D object and play the role of basic units in multi-modal fusion. Specifically, we project PoIs into the view of each modality to sample the corresponding feature and integrate the multi-modal features at each PoI through a dynamic fusion block. Furthermore, the features of PoIs derived from the same query box are aggregated together to update the query feature. Our approach prevents information loss caused by view transformation and eliminates the computation-intensive global attention, making the multi-modal 3D object detector more applicable. We conducted extensive experiments on the nuScenes dataset to evaluate our approach. Remarkably, our PoIFusion achieves 74.9% NDS and 73.4% mAP, setting a state-of-the-art record on the multi-modal 3D object detection benchmark.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+    
+    <!--/ Framework. -->
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <img src="static/images/poifusion_framework.png" alt="PoIFusion">
+        <!-- <h2 class="subtitle has-text-centered">
+          <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
+          free-viewpoint
+          portraits.
+        </h2> -->
+      </div>
+    </div>
+
+    <!-- Demo. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Performance on nuScenes dataset</h2>
+        <img src="static/images/performance.png" alt="Performance on nuScenes">
+      </div>
+    </div>
+    <!--/ Demo. -->
+  </div>
+</section>
+
+<!-- 
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{mao2023gptdriver,
+  author = {Mao, Jiageng and Qian, Yuxi and Zhao, Hang and Wang, Yue},
+  title = {GPT-Driver: Learning to Drive with GPT},
+  year = {2023},
+}</code></pre>
+  </div>
+</section> -->
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            Website template is borrowed from <a
+              href="https://pointscoder.github.io/projects/gpt_driver/index.html">GPT-Driver</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
